@@ -18,7 +18,7 @@ if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
 
     # Convertir las columnas de fecha a tipo datetime
-    date_columns = ['Invoice Date', 'Entered On', 'Net Due date', 'PO Due Date']
+    date_columns = ['Invoice Date', 'Entered On', 'Net Due Date', 'PO Due Date']
     for col in date_columns:
         df[col] = pd.to_datetime(df[col], errors='coerce')  # 'coerce' para manejar errores en la conversión
 
