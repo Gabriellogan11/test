@@ -29,7 +29,7 @@ if uploaded_file is not None:
     st.sidebar.header("Filtros")
     buyer = st.sidebar.multiselect("Selecciona uno o más Compradores", options=df['Buyer'].unique())
     vendor = st.sidebar.multiselect("Selecciona uno o más Proveedores", options=df['Vendor Name'].unique())
-    days_exception = st.sidebar.slider("Selecciona el rango de Días en Excepción", min_value=int(df['Days in Exception'].min()), max_value=int(df['Days in Exception'].max()), value=(0, int(df['Days in exception'].max())))
+    days_exception = st.sidebar.slider("Selecciona el rango de Días en Excepción", min_value=int(df['Days in Exception'].min()), max_value=int(df['Days in Exception'].max()), value=(0, int(df['Days in Exception'].max())))
     rule_id = st.sidebar.multiselect("Selecciona uno o más Rule ID", options=df['Rule ID'].unique())
 
     # Filtrar el DataFrame
