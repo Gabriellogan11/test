@@ -23,13 +23,13 @@ if uploaded_file is not None:
         df[col] = pd.to_datetime(df[col], errors='coerce')  # 'coerce' para manejar errores en la conversión
 
     # Calcular días de atraso
-    df['Days Overdue'] = (datetime.now() - df['Net Due date']).dt.days
+    df['Days Overdue'] = (datetime.now() - df['Net Due Date']).dt.days
 
     # Sidebar para diferentes filtros
     st.sidebar.header("Filtros")
     buyer = st.sidebar.multiselect("Selecciona uno o más Compradores", options=df['Buyer'].unique())
     vendor = st.sidebar.multiselect("Selecciona uno o más Proveedores", options=df['Vendor Name'].unique())
-    days_exception = st.sidebar.slider("Selecciona el rango de Días en Excepción", min_value=int(df['Days in exception'].min()), max_value=int(df['Days in exception'].max()), value=(0, int(df['Days in exception'].max())))
+    days_exception = st.sidebar.slider("Selecciona el rango de Días en Excepción", min_value=int(df['Days in Exception'].min()), max_value=int(df['Days in exception'].max()), value=(0, int(df['Days in exception'].max())))
     rule_id = st.sidebar.multiselect("Selecciona uno o más Rule ID", options=df['Rule ID'].unique())
 
     # Filtrar el DataFrame
@@ -40,7 +40,7 @@ if uploaded_file is not None:
         filtered_df = filtered_df[filtered_df['Vendor Name'].isin(vendor)]
     if rule_id:
         filtered_df = filtered_df[filtered_df['Rule ID'].isin(rule_id)]
-    filtered_df = filtered_df[(filtered_df['Days in exception'] >= days_exception[0]) & (filtered_df['Days in exception'] <= days_exception[1])]
+    filtered_df = filtered_df[(filtered_df['Days in Exception'] >= days_exception[0]) & (filtered_df['Days in Exception'] <= days_exception[1])]
 
     st.write("Facturas filtradas:")
     st.dataframe(filtered_df)
