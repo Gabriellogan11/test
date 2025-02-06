@@ -29,7 +29,7 @@ if uploaded_file is not None:
     st.sidebar.header("Filtros")
     buyer = st.sidebar.multiselect("Selecciona uno o más Compradores", options=df['Buyer'].unique())
     vendor = st.sidebar.multiselect("Selecciona uno o más Proveedores", options=df['Vendor Name'].unique())
-    days_exception = st.sidebar.slider("Selecciona el rango de Días en Excepción", min_value=int(df['Days in Exception'].min()), max_value=int(df['Days in exception'].max()), value=(0, int(df['Days in exception'].max())))
+    days_exception = st.sidebar.slider("Selecciona el rango de Días en Excepción", min_value=int(df['Days in Exception'].min()), max_value=int(df['Days in Exception'].max()), value=(0, int(df['Days in exception'].max())))
     rule_id = st.sidebar.multiselect("Selecciona uno o más Rule ID", options=df['Rule ID'].unique())
 
     # Filtrar el DataFrame
@@ -51,20 +51,20 @@ if uploaded_file is not None:
     # Histograma de días en excepción
     st.subheader("Distribución de Días en Excepción")
     fig, ax = plt.subplots()
-    sns.histplot(filtered_df['Days in exception'], bins=20, kde=True, ax=ax)
+    sns.histplot(filtered_df['Days in Exception'], bins=20, kde=True, ax=ax)
     st.pyplot(fig)
 
     # Gráfico de barras de días en excepción por proveedor
     st.subheader("Días en Excepción por Proveedor")
     fig, ax = plt.subplots(figsize=(10, 6))
-    sns.barplot(x='Vendor Name', y='Days in exception', data=filtered_df, ax=ax)
+    sns.barplot(x='Vendor Name', y='Days in Exception', data=filtered_df, ax=ax)
     plt.xticks(rotation=90)
     st.pyplot(fig)
 
     # Gráfico de dispersión de días de atraso vs días en excepción
     st.subheader("Días de Atraso vs Días en Excepción")
     fig, ax = plt.subplots()
-    sns.scatterplot(x='Days Overdue', y='Days in exception', data=filtered_df, ax=ax)
+    sns.scatterplot(x='Days Overdue', y='Days in Exception', data=filtered_df, ax=ax)
     st.pyplot(fig)
 
     # Gráfico de líneas de volumen de compras por mes
@@ -91,7 +91,7 @@ if uploaded_file is not None:
     # Gráfico de dispersión de monto de facturas vs días en excepción
     st.subheader("Monto de Facturas vs Días en Excepción")
     fig, ax = plt.subplots()
-    sns.scatterplot(x='Vchr Line Amount in USD', y='Days in exception', data=filtered_df, ax=ax)
+    sns.scatterplot(x='Vchr Line Amount in USD', y='Days in Exception', data=filtered_df, ax=ax)
     st.pyplot(fig)
 
 else:
